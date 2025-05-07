@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% form_theme participantForm 'bootstrap_5_horizontal_layout.html.twig' %}
+{% block body %}
+    {% if app.user.photo %}
+        <aside class="photo">
+            <img src="{{ asset('img/photoProfil/' ~ participant.photo) }}" alt="{{ participant.pseudo }}">
+        </aside>
+    {% endif %}
+    <div id="modifProfilFormContainer">
+        {{ form_start(participantForm) }}
+
+        {{ form_widget(participantForm) }}
+
+        <div id="modifProfilButtons">
+            <a href="{{ path('changePassword') }}">
+                <button type="button" class="btn btn-primary">
+                        Changer votre mot de passe
+                </button>
+            </a>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+            <a href="{{ path('sorties_app_home') }}">
+                <button type="button" class="btn btn-danger">
+                        Annuler
+                </button>
+            </a>
+        </div>
+
+        {{ form_end(participantForm) }}
+    </div>
+
+{% endblock %}
+
+{% block title %}
+{{ parent() }} | Mon Profil
+{% endblock %}
+

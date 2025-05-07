@@ -1,0 +1,241 @@
+body {
+    background: linear-gradient(#000000, #132135);
+    background-attachment: fixed;
+    color: #EEE;
+    font-family: 'Crimson Text', serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 5px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #BC956B;
+}
+
+img {
+    max-width: 100%;
+}
+
+body > .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header img {
+    height: 70px;
+}
+
+main {
+    flex: 1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+nav li {
+    margin-right: 1rem;
+}
+
+.series-list {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.serie-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+}
+
+.serie-details-infos > div {
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 700px) {
+    .serie-details {
+        grid-template-columns: 300px 1fr;
+    }
+}
+
+.seasons article {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.seasons article img {
+    max-height: 200px;
+    margin-right: 0.6rem;
+}
+
+@media screen and (min-width: 700px) {
+    .serie-details {
+        grid-template-columns: 300px 1fr;
+    }
+}
+
+label{
+    margin-top: 1rem;
+}
+
+input,
+textarea,
+select {
+    box-sizing: border-box;
+    max-width: 50vh;
+    width: 150px;
+}
+
+.flash {
+    padding: 8px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    border-color: #6D28D9;
+}
+
+.flash-success{
+    background-color: lawngreen;
+}
+
+.flash-warning{
+    background-color: #996800;
+}
+
+#loginForm{
+    text-align: center;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginForm div{
+    margin-bottom: 15px;
+    width: 350px;
+    text-align:start ;
+}
+
+#loginForm div label{
+    width: 150px;
+    display: inline-block;
+}
+
+#loginForm div input{
+    border-radius: 7px;
+    border: 1px;
+}
+
+#loginButtons{
+    display: flex;
+    justify-content: center;
+    width: 350px;
+}
+
+#modifProfilFormContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#modifProfilFormContainer form{
+    width: 400px;
+}
+
+/* * * * * * * Style général des tableaux * * * * * *  */
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Style des cellules du tableau */
+td, th {
+    border: 1px solid #675467;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Style des entêtes du tableau */
+th {
+    background-color: #422642;
+}
+
+/* Style des lignes impaires du tableau */
+tr:nth-child(odd) {
+    background-color: #443d44;
+}
+/* paires */
+tr:nth-child(even) {
+    background-color: #313031;
+}
+
+
+/* Hover sur les lignes du tableau */
+tr:hover {
+    background-color: #644364;
+}
+
+
+/* * * * * * * Fin de Style général des tableaux * * * * * *  */
+
+/* Style du conteneur avec défilement */
+.table-container {
+    clear: both; /* remettre à 0 les colonnes */
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/***_____________________ formulaire filtres _________________***/
+.form-container {
+    /* si besoin */
+}
+
+/* Aligner les labels à gauche avec une largeur de 30% */
+.form-group label {
+    text-align: left;
+    width: 30%; /* Ajustez la valeur en fonction de vos besoins */
+    display: inline-block; /* Garantit que le label occupe la largeur spécifiée */
+}
+
+/* Les champs prendront automatiquement le reste de l'espace */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+
+/* Styles pour la liste déroulante et le champ texte nom */
+.form-left {
+
+    float: left;
+    width: 50%;
+}
+
+/* Styles pour les cases à cocher */
+.form-right {
+
+    float: right;
+    width: 50%;
+}
+
+.form-container .form-right button {
+    height: 3rem;
+    width: 80%;
+    margin: 10px;
+}
+/*______________ Fin formulaire de filtres ________________________ */

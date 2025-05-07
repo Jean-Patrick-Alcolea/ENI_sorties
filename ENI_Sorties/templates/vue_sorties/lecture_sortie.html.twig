@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {#    récupération avec parent() du contenu du bloc title parent #}
+    {{ parent() }} | Afficher sortie
+{% endblock %}
+
+
+{% block body %}
+    <h1>Détail de la sortie</h1>
+    <div class="container">
+        <div class="form-container">
+            {{ form_start(form) }}
+            <div class="form-left">
+                <div class="form-group">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.dateHeure) }}
+                    {{ form_widget(form.dateHeure, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.dateLimiteInscription) }}
+                    {{ form_widget(form.dateLimiteInscription, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.nbInscriptionsMax) }}
+                    {{ form_widget(form.nbInscriptionsMax, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.duree) }}
+                    {{ form_widget(form.duree, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.infoSortie) }}
+                    {{ form_widget(form.infoSortie, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="table-container">
+                    <h2>Liste des participants inscrits : </h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Nom</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for participation in participants %}
+                            {% set participant = participation['leParticipant'] %}
+                            {% set dateInscription = participation['laDateDInscription'] %}
+                            <tr>
+                                <td>{{ participant.pseudo }}</td>
+                                <td>{{ participant.prenom }} {{ participant.nom }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form_right">
+                <div class="form-group">
+                    {{ form_label(form.Campus) }}
+                    {{ form_widget(form.Campus, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.Ville) }}
+                    {{ form_widget(form.Ville, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.lieu) }}
+                    {{ form_widget(form.lieu, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.rue) }}
+                    {{ form_widget(form.rue, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.Code_Postal) }}
+                    {{ form_widget(form.Code_Postal, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.latitude) }}
+                    {{ form_widget(form.latitude, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.longitude) }}
+                    {{ form_widget(form.longitude, {'attr': {'disabled':'disabled'}}) }}
+                </div>
+
+            </div>
+
+            {{ form_end(form,{render_rest:false}) }}
+
+            <div>
+                {#    bouton d'inscription #}
+                {#
+                    todo show 02 04 le bouton d'inscription.
+                    Pas d'affichage conditionnel car je voulais tester les Flashs indiquant les
+                    différentes erreurs
+                #}
+
+                <a href="{{ path('sorties_sinscrire', {'id': sortie.id}) }}">
+                    <button class="btn btn-success" >S'inscrire!</button>
+                </a>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Sortie{% endblock %}
+
+{% block body %}
+    <h1>{% block titreSortie %}{% endblock %}</h1>
+
+    <div class="nouvelleSortieForm">
+                    {{ form_start(sortieForm) }}
+                    {{ form_widget(sortieForm) }}
+                    {{ form_end(sortieForm) }}
+    </div>
+{% endblock %}

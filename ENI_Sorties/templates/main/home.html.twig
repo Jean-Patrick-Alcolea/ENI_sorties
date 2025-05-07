@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {#    récupération avec parent() du contenu du bloc title parent #}
+    {{ parent() }} | Accueil
+{% endblock %}
+
+
+{% block body %}
+    <h1>Les sorties</h1>
+    <div class="container">
+        <div class="form-container">
+            {% include 'main/inc/formFiltre.html.twig' with {'filtreForm': filtreForm} %}
+            {# todo show 01 03 accueil et filtres #}
+        </div>
+
+
+        <h2>Liste des Sorties</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Nom de la Sortie</th>
+                    <th>Date de la Sortie</th>
+                    <th>Clôture</th>
+                    <th>Inscrits/Places</th>
+                    <th>Etat</th>
+                    <th>Inscrit</th>
+                    <th>Organisateur</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sortieData in sortiesData %}
+                    {% set sortie = sortieData['sortie'] %}
+                    <tr>
+                        <td>{{ sortie.nom }}</td>
+                        <td>{{ sortie.dateHeure|date('d/m/Y H:i') }}</td>
+                        <td>{{ sortie.dateLimiteInscription|date('d/m/Y H:i') }}</td>
+                        <td>{{ sortieData['ratioInscriptions'] }}</td>
+                        <td>{{ sortie.etat.libelle }}</td>
+                        <td>{{ sortieData['userIsInscrit'] ? 'X' : '' }}</td>
+                        <td>
+                            <a href="{{ path('app_detailProfil', {'email': sortie.participantOrganisateur.email}) }}">
+                                {{ sortie.participantOrganisateur.prenom }} {{ sortie.participantOrganisateur.nom }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('sorties_show', {'id': sortie.id}) }}">Afficher</a>
+
+                            {% if sortieData['userIsInscrit'] %}
+                                {#
+                                todo show 02 03 lien de desinscription affichage conditionné par userIsInscrit
+                                avec fenêtre de confirmation inspirée du CRUD
+                                #}
+                                <a href="{{ path('sorties_desister', {'id': sortie.id}) }}"
+                                   onclick="return confirm('Es-tu sûr de vouloir te désinscrire de cette sortie?');">
+                                    Se désinscrire
+                                </a>
+
+                            {% elseif sortieData['userIsOrganisateur'] %}
+                                {# JL todo ajouter un token? #}
+                                <a href="{{ path('sorties_edit', {'id': sortie.id}) }}"> - Modifier / Publier</a>
+
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {#    bouton de création de sortie #}
+    <div>
+        <a href="{{ path('sorties_nouvelleSortie') }}">
+            <button class="btn_crea_sortie">Créer une sortie</button>
+        </a>
+
+    </div>
+{% endblock %}
+
+
+
+
+

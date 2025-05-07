@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sortie{% endblock %}
+
+{% block body %}
+    <h1>Edit Sortie</h1>
+
+    {{ include('sortie_controller_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('crud_index') }}">back to list</a>
+
+    {{ include('sortie_controller_crud/_delete_form.html.twig') }}
+
+
+{% endblock %}

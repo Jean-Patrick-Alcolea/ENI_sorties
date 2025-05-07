@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{#
+    todo show 03 03 formulaire pour ajouter l'observation d'annulation et valider celle ci
+#}
+
+{% block body %}
+    <form method="post" action="{{ path('sorties_annulation_confirmation', {'id': sortie.id}) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('annulation_confirmation' ~ sortie.id) }}">
+        <label for="motif">Motif d'annulation :</label>
+        <textarea id="motif" name="motif"  class="motif-textarea" required
+                  placeholder="Entrez le motif de l'annulation visible uniquement par les administrateurs du site."></textarea>
+        <button type="submit">Confirmer l'annulation</button>
+    </form>
+{% endblock %}

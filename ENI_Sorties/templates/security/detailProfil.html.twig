@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if participant.pseudo %}
+        <h1 id="profilPseudo">{{ participant.pseudo }}</h1>
+    {% endif %}
+
+    {% if participant.photo %}
+        <aside class="photo">
+            <img src="{{ asset('img/photoProfil/' ~ participant.photo) }}" alt="{{ participant.photo }}">
+        </aside>
+    {% endif %}
+
+        <section id="containerProfil">
+            <div>
+                <label>Prenom :</label> {{ participant.prenom }}
+            </div>
+            <div>
+                <label>Nom :</label> {{ participant.nom }}
+            </div>
+            {% if participant.telephone %}
+                <div>
+                    <label>Teléphone :</label> {{ participant.telephone }}
+                </div>
+            {% endif %}
+            <div>
+                <label>Email :</label> {{ participant.email }}
+            </div>
+            <div>
+                <label>Campus :</label> {{ participant.campus.nom }}
+            </div>
+        </section>
+    <div id="displayProfilButton">
+            <a href="{{ path('sorties_app_home') }}">
+                <button type="button" class="btn btn-primary" >
+                        Retour
+                </button>
+            </a>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

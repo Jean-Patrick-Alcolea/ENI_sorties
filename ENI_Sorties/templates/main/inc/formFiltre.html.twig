@@ -1,0 +1,53 @@
+<h3>Filtrer la recherche</h3>
+{# todo show 01 04 le twig included avec les filtres de FiltreType#}
+
+{#<form action="#}{#{{ path('your_form_action') }}#}{#" method="post">#}
+    <div class="form-left">
+        {{ form_start(filtreForm) }}
+
+        {# Render left-side fields manually #}
+
+        <div class="form-group">
+            {{ form_label(filtreForm.choixIdCampus) }}
+            {{ form_widget(filtreForm.choixIdCampus) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(filtreForm.stringMotSearch) }}
+            {{ form_widget(filtreForm.stringMotSearch) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(filtreForm.dateDebutSearch) }}
+            {{ form_widget(filtreForm.dateDebutSearch) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(filtreForm.dateFinSearch) }}
+            {{ form_widget(filtreForm.dateFinSearch) }}
+        </div>
+
+    </div>
+
+    <div class="form-right">
+        {# Render right-side fields manually #}
+        <div class="form-group">
+            {{ form_label(filtreForm.checkUserOrganise) }}
+            {{ form_widget(filtreForm.checkUserOrganise) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(filtreForm.checkUserInscrit) }}
+            {{ form_widget(filtreForm.checkUserInscrit) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(filtreForm.checkSortiePassee) }}
+            {{ form_widget(filtreForm.checkSortiePassee) }}
+        </div>
+
+        <button>Chercher !</button>
+    </div>
+
+    {{ form_end(filtreForm) }}
+{#</form>#}

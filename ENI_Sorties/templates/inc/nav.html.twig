@@ -1,0 +1,17 @@
+<nav>
+    {% if app.user %}
+        <ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <li><a href="{{ path('admin') }}">Admin dashboard</a></li>
+            {% endif %}
+
+
+            
+            <li><a href="{{ path('sorties_app_home') }}">Accueil</a></li>
+
+            <li><a href="{{ path('app_monProfil') }}">Mon Profil</a></li>
+
+            <li><a href="{{ path('app_logout') }}">Se déconecter</a></li>
+        </ul>
+    {% endif %}
+</nav>

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie{% endblock %}
+
+{% block body %}
+    <h1>Sortie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sortie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sortie.nom }}</td>
+            </tr>
+            <tr>
+                <th>DateHeure</th>
+                <td>{{ sortie.dateHeure ? sortie.dateHeure|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ sortie.duree }}</td>
+            </tr>
+            <tr>
+                <th>DateLimiteInscription</th>
+                <td>{{ sortie.dateLimiteInscription ? sortie.dateLimiteInscription|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NbInscriptionsMax</th>
+                <td>{{ sortie.nbInscriptionsMax }}</td>
+            </tr>
+            <tr>
+                <th>InfoSortie</th>
+                <td>{{ sortie.infoSortie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_index') }}">back to list</a>
+
+    <a href="{{ path('crud_edit', {'id': sortie.id}) }}">edit</a>
+
+    {{ include('sortie_controller_crud/_delete_form.html.twig') }}
+
+    <div class="table-container">
+        <h2>Liste des participants</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date d'inscription</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participation in participants %}
+                {% set participant = participation['leParticipant'] %}
+                {% set dateInscription = participation['laDateDInscription'] %}
+                <tr>
+                    <td>{{ participant.pseudo }}</td>
+                    <td>{{ participant.prenom }}</td>
+                    <td>{{ participant.nom }}</td>
+                    <td>{{ dateInscription|date('d/m/Y H:i') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{#    bouton d'inscription #}
+    <div>
+        <a href="{{ path('sorties_sinscrire', {'id': sortie.id}) }}">
+            <button class="sinscrire">S'inscrire!</button>
+        </a>
+    </div>
+{% endblock %}

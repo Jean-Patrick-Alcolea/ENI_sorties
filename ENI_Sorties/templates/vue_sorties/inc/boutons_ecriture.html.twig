@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier une sortie</title>
+</head>
+<body>
+
+<form action="{{ path('App\Controller\SortieController::afficherSortie') }}" method="post">
+
+    <div class="form-group">
+        <button type="submit" name="save">Enregistrer</button>
+        <button type="submit" name="publish">Publier la sortie</button>
+        <button type="reset" name="delete">Supprimer la sortie</button>
+        <a href="{{ path('sorties_app_home') }}">Annuler</a>
+    </div>
+
+</form>
+</body>
+</html>

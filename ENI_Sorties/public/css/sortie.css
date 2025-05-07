@@ -1,0 +1,25 @@
+body > div.container > main > h1 {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 10vh;
+}
+.form-group textarea {
+    width: 50%;
+    box-sizing: border-box;
+    height: 100px;
+    resize: none;
+}
+
+body > div.container > main > div > div > div > a > button {
+    margin-top: 20px;
+}
+
+.table-container {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 0;
+    clear: both; /* remettre à 0 les colonnes */
+    max-height: 400px;
+    overflow-y: auto;
+}
