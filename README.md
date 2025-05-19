@@ -12,7 +12,6 @@ Application web de gestion et d’organisation de sorties pour l’école ENI.
 
 - Création et gestion d'événements
 - Inscription des participants
-- Vue calendrier des sorties
 
 ## 🚀 Objectif
 
